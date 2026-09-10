@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedro Henrique - 5 anos</title>
+  <meta name="description" content="Convite interativo de aniversário de Pedro Henrique - 5 anos" />
+  <style>
+    *{box-sizing:border-box}
+    :root{
+      --bg1:#080b12;
+      --bg2:#131b2b;
+      --card:#0f1522;
+      --text:#f8fafc;
+      --muted:#b8c0cc;
+      --red:#d7263d;
+      --blue:#2166f3;
+      --gold:#f4b400;
+      --green:#25D366;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(215,38,61,.18), transparent 24%),
+        radial-gradient(circle at 85% 25%, rgba(33,102,243,.18), transparent 22%),
+        radial-gradient(circle at 50% 90%, rgba(244,180,0,.10), transparent 28%),
+        linear-gradient(160deg,var(--bg1),var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    .scene{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .spark,.spark2,.spark3{
+      position:absolute;
+      border-radius:999px;
+      opacity:.35;
+      filter:blur(.2px);
+    }
+    .spark{width:10px;height:10px;background:var(--red);animation:float1 8s linear infinite}
+    .spark2{width:8px;height:8px;background:var(--blue);animation:float2 10s linear infinite}
+    .spark3{width:6px;height:6px;background:var(--gold);animation:float3 12s linear infinite}
+    @keyframes float1{0%{transform:translateY(110vh) scale(.7)}100%{transform:translateY(-20vh) scale(1.2)}}
+    @keyframes float2{0%{transform:translateY(-15vh) translateX(0)}100%{transform:translateY(110vh) translateX(60px)}}
+    @keyframes float3{0%{transform:translate(-10vw,90vh) rotate(0)}100%{transform:translate(110vw,-10vh) rotate(360deg)}}
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      width:min(760px,100%);
+      margin:0 auto;
+      padding:24px;
+    }
+    .card{
+      position:relative;
+      overflow:hidden;
+      background:rgba(15,21,34,.94);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:30px;
+      box-shadow:0 24px 80px rgba(0,0,0,.42);
+      backdrop-filter:blur(10px);
+    }
+    .hero{
+      position:relative;
+      padding:34px 24px 26px;
+      text-align:center;
+      min-height:430px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:
+        linear-gradient(145deg,rgba(215,38,61,.12),rgba(33,102,243,.10)),
+        #101827;
+    }
+    .ring{
+      position:absolute;
+      width:320px;height:320px;
+      border-radius:50%;
+      border:2px solid rgba(255,255,255,.07);
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      animation:pulse 3.4s ease-in-out infinite;
+    }
+    .ring.r2{width:240px;height:240px;animation-delay:.6s}
+    .ring.r3{width:160px;height:160px;animation-delay:1.2s}
+    @keyframes pulse{
+      0%,100%{opacity:.25;transform:translate(-50%,-50%) scale(.95)}
+      50%{opacity:.7;transform:translate(-50%,-50%) scale(1.04)}
+    }
+
+    .badge{
+      position:relative;
+      z-index:2;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin:0 auto 14px;
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.11em;
+      animation:badgeGlow 2.6s ease-in-out infinite;
+    }
+    @keyframes badgeGlow{
+      0%,100%{box-shadow:0 0 0 rgba(244,180,0,0)}
+      50%{box-shadow:0 0 24px rgba(244,180,0,.15)}
+    }
+    h1{
+      position:relative;
+      z-index:2;
+      margin:6px 0 2px;
+      font-size:clamp(40px,8vw,68px);
+      line-height:.95;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+      text-shadow:0 6px 30px rgba(0,0,0,.32);
+      animation:titleIn .8s ease-out both;
+    }
+    @keyframes titleIn{
+      from{opacity:0;transform:translateY(18px) scale(.96)}
+      to{opacity:1;transform:none}
+    }
+    .age{
+      position:relative;
+      z-index:2;
+      margin:8px 0 0;
+      font-size:clamp(24px,5vw,34px);
+      font-weight:900;
+      color:#ffe08a;
+      animation:titleIn .9s .1s ease-out both;
+    }
+    .intro{
+      position:relative;
+      z-index:2;
+      max-width:500px;
+      margin:16px auto 0;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.55;
+      animation:titleIn 1s .15s ease-out both;
+    }
+
+    .icons{
+      position:relative;
+      z-index:2;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:22px;
+    }
+    .heroicon{
+      width:58px;height:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:28px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.09);
+      animation:bob 2.8s ease-in-out infinite;
+    }
+    .heroicon:nth-child(2){animation-delay:.3s}
+    .heroicon:nth-child(3){animation-delay:.6s}
+    .heroicon:nth-child(4){animation-delay:.9s}
+    @keyframes bob{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
+    }
+
+    .content{padding:22px}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+    .info{
+      background:#0b1220;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:18px;
+      transition:.25s ease;
+    }
+    .info:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.16)}
+    .label{
+      font-size:11px;
+      color:#91a0b2;
+      text-transform:uppercase;
+      letter-spacing:.10em;
+      margin-bottom:7px;
+    }
+    .value{font-weight:800;line-height:1.35}
+
+    .mission{
+      margin-top:18px;
+      background:linear-gradient(145deg,#f8fafc,#eef2f7);
+      color:#111827;
+      border-radius:22px;
+      padding:22px;
+      text-align:center;
+      box-shadow:0 16px 40px rgba(0,0,0,.18);
+    }
+    .mission h2{margin:0 0 6px;font-size:23px}
+    .mission p{margin:0 auto 16px;color:#5b6471;max-width:460px;line-height:1.5}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:100%;
+      min-height:52px;
+      border:none;
+      text-decoration:none;
+      background:var(--green);
+      color:#072c16;
+      font-size:17px;
+      font-weight:900;
+      border-radius:15px;
+      box-shadow:0 10px 28px rgba(37,211,102,.25);
+      transition:transform .2s ease, box-shadow .2s ease;
+      animation:ctaPulse 2.4s ease-in-out infinite;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(37,211,102,.32)}
+    @keyframes ctaPulse{
+      0%,100%{box-shadow:0 10px 28px rgba(37,211,102,.20)}
+      50%{box-shadow:0 12px 36px rgba(37,211,102,.36)}
+    }
+    .small{font-size:12px;color:#7b8490;margin-top:10px}
+
+    .countdown{
+      margin-top:18px;
+      background:#0b1220;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      padding:18px;
+      text-align:center;
+    }
+    .countdown-title{
+      font-size:12px;
+      color:#97a6b8;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+    .timegrid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+    }
+    .timebox{
+      background:#121b2b;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:16px;
+      padding:12px 8px;
+    }
+    .num{font-size:28px;font-weight:900}
+    .unit{font-size:10px;color:#8fa0b4;text-transform:uppercase;margin-top:4px}
+
+    .footer{
+      text-align:center;
+      color:#8794a5;
+      font-size:12px;
+      padding:0 22px 24px;
+    }
+    .boom{
+      position:absolute;
+      width:16px;height:16px;
+      border:2px solid rgba(255,255,255,.10);
+      transform:rotate(45deg);
+      animation:spin 9s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(405deg)}}
+    @media (max-width:640px){
+      .wrap{padding:12px}
+      .grid{grid-template-columns:1fr}
+      .hero{min-height:410px;padding:28px 18px 24px}
+      .content{padding:16px}
+      .timegrid{gap:7px}
+      .num{font-size:23px}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation:none!important;transition:none!important}
+      html{scroll-behavior:auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <span class="spark" style="left:8%;animation-delay:-2s"></span>
+    <span class="spark2" style="left:18%;animation-delay:-4s"></span>
+    <span class="spark3" style="left:28%;animation-delay:-7s"></span>
+    <span class="spark" style="left:40%;animation-delay:-5s"></span>
+    <span class="spark2" style="left:55%;animation-delay:-1s"></span>
+    <span class="spark3" style="left:66%;animation-delay:-8s"></span>
+    <span class="spark" style="left:78%;animation-delay:-3s"></span>
+    <span class="spark2" style="left:88%;animation-delay:-6s"></span>
+  </div>
+
+  <div class="wrap">
+    <main class="card">
+      <section class="hero">
+        <div class="ring"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+        <span class="boom" style="top:12%;left:10%"></span>
+        <span class="boom" style="right:12%;bottom:16%;animation-delay:-3s"></span>
+
+        <div class="badge">⚡ Missão especial</div>
+        <h1>Pedro Henrique</h1>
+        <p class="age">5 anos!</p>
+        <p class="intro">Você foi convocado para uma aventura de aniversário inspirada no universo dos super-heróis.</p>
+
+        <div class="icons" aria-label="Símbolos de super-heróis">
+          <div class="heroicon">🕷️</div>
+          <div class="heroicon">🛡️</div>
+          <div class="heroicon">⚡</div>
+          <div class="heroicon">💥</div>
+        </div>
+      </section>
+
+      <section class="content">
+        <div class="grid">
+          <div class="info">
+            <div class="label">Data</div>
+            <div class="value">📅 23 de outubro</div>
+          </div>
+          <div class="info">
+            <div class="label">Horário</div>
+            <div class="value">⏰ 19h</div>
+          </div>
+          <div class="info">
+            <div class="label">Local</div>
+            <div class="value">📍 Loja Maçônica de Camacan</div>
+          </div>
+        </div>
+
+        <div class="countdown">
+          <div class="countdown-title">Contagem regressiva para a missão</div>
+          <div class="timegrid">
+            <div class="timebox"><div id="days" class="num">--</div><div class="unit">dias</div></div>
+            <div class="timebox"><div id="hours" class="num">--</div><div class="unit">horas</div></div>
+            <div class="timebox"><div id="minutes" class="num">--</div><div class="unit">min</div></div>
+            <div class="timebox"><div id="seconds" class="num">--</div><div class="unit">seg</div></div>
+          </div>
+        </div>
+
+        <div class="mission">
+          <h2>Vai participar dessa missão? 🎉</h2>
+          <p>Clique no botão abaixo. O WhatsApp abrirá com a mensagem de confirmação pronta.</p>
+          <a class="btn"
+             href="https://wa.me/5573988382855?text=Ol%C3%A1%21%20Confirmo%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20de%20Pedro%20Henrique%2C%20dia%2023%2F10%20%C3%A0s%2019h.%20%F0%9F%8E%89"
+             target="_blank" rel="noopener noreferrer">
+             ✅ Confirmar presença no WhatsApp
+          </a>
+          <div class="small">Confirmação enviada para: (73) 98838-2855</div>
+        </div>
+      </section>
+
+      <div class="footer">Pedro Henrique • 5 anos • 23/10 às 19h</div>
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      // Usa 23/10/2026 às 19:00 em horário local do dispositivo.
+      const eventDate = new Date(2026, 9, 23, 19, 0, 0);
+      const d = document.getElementById('days');
+      const h = document.getElementById('hours');
+      const m = document.getElementById('minutes');
+      const s = document.getElementById('seconds');
+
+      function updateCountdown(){
+        let diff = eventDate.getTime() - Date.now();
+        if(diff <= 0){
+          d.textContent = '0';
+          h.textContent = '0';
+          m.textContent = '0';
+          s.textContent = '0';
+          return;
+        }
+        const sec = Math.floor(diff / 1000);
+        const days = Math.floor(sec / 86400);
+        const hours = Math.floor((sec % 86400) / 3600);
+        const mins = Math.floor((sec % 3600) / 60);
+        const secs = sec % 60;
+        d.textContent = days;
+        h.textContent = String(hours).padStart(2,'0');
+        m.textContent = String(mins).padStart(2,'0');
+        s.textContent = String(secs).padStart(2,'0');
+      }
+      updateCountdown();
+      setInterval(updateCountdown,1000);
+    })();
+  </script>
+</body>
+</html>
