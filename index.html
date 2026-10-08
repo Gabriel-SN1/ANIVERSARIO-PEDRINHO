@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -45,12 +46,33 @@
       opacity:.35;
       filter:blur(.2px);
     }
-    .spark{width:10px;height:10px;background:var(--red);animation:float1 8s linear infinite}
-    .spark2{width:8px;height:8px;background:var(--blue);animation:float2 10s linear infinite}
-    .spark3{width:6px;height:6px;background:var(--gold);animation:float3 12s linear infinite}
-    @keyframes float1{0%{transform:translateY(110vh) scale(.7)}100%{transform:translateY(-20vh) scale(1.2)}}
-    @keyframes float2{0%{transform:translateY(-15vh) translateX(0)}100%{transform:translateY(110vh) translateX(60px)}}
-    @keyframes float3{0%{transform:translate(-10vw,90vh) rotate(0)}100%{transform:translate(110vw,-10vh) rotate(360deg)}}
+    .spark{
+      width:10px;height:10px;
+      background:var(--red);
+      animation:float1 8s linear infinite;
+    }
+    .spark2{
+      width:8px;height:8px;
+      background:var(--blue);
+      animation:float2 10s linear infinite;
+    }
+    .spark3{
+      width:6px;height:6px;
+      background:var(--gold);
+      animation:float3 12s linear infinite;
+    }
+    @keyframes float1{
+      0%{transform:translateY(110vh) scale(.7)}
+      100%{transform:translateY(-20vh) scale(1.2)}
+    }
+    @keyframes float2{
+      0%{transform:translateY(-15vh) translateX(0)}
+      100%{transform:translateY(110vh) translateX(60px)}
+    }
+    @keyframes float3{
+      0%{transform:translate(-10vw,90vh) rotate(0)}
+      100%{transform:translate(110vw,-10vh) rotate(360deg)}
+    }
 
     .wrap{
       position:relative;
@@ -89,11 +111,23 @@
       transform:translate(-50%,-50%);
       animation:pulse 3.4s ease-in-out infinite;
     }
-    .ring.r2{width:240px;height:240px;animation-delay:.6s}
-    .ring.r3{width:160px;height:160px;animation-delay:1.2s}
+    .ring.r2{
+      width:240px;height:240px;
+      animation-delay:.6s;
+    }
+    .ring.r3{
+      width:160px;height:160px;
+      animation-delay:1.2s;
+    }
     @keyframes pulse{
-      0%,100%{opacity:.25;transform:translate(-50%,-50%) scale(.95)}
-      50%{opacity:.7;transform:translate(-50%,-50%) scale(1.04)}
+      0%,100%{
+        opacity:.25;
+        transform:translate(-50%,-50%) scale(.95);
+      }
+      50%{
+        opacity:.7;
+        transform:translate(-50%,-50%) scale(1.04);
+      }
     }
 
     .badge{
@@ -129,8 +163,14 @@
       animation:titleIn .8s ease-out both;
     }
     @keyframes titleIn{
-      from{opacity:0;transform:translateY(18px) scale(.96)}
-      to{opacity:1;transform:none}
+      from{
+        opacity:0;
+        transform:translateY(18px) scale(.96);
+      }
+      to{
+        opacity:1;
+        transform:none;
+      }
     }
     .age{
       position:relative;
@@ -192,7 +232,10 @@
       padding:18px;
       transition:.25s ease;
     }
-    .info:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.16)}
+    .info:hover{
+      transform:translateY(-3px);
+      border-color:rgba(255,255,255,.16);
+    }
     .label{
       font-size:11px;
       color:#91a0b2;
@@ -200,43 +243,10 @@
       letter-spacing:.10em;
       margin-bottom:7px;
     }
-    .value{font-weight:800;line-height:1.35}
-
-    .mission{
-      margin-top:18px;
-      background:linear-gradient(145deg,#f8fafc,#eef2f7);
-      color:#111827;
-      border-radius:22px;
-      padding:22px;
-      text-align:center;
-      box-shadow:0 16px 40px rgba(0,0,0,.18);
+    .value{
+      font-weight:800;
+      line-height:1.35;
     }
-    .mission h2{margin:0 0 6px;font-size:23px}
-    .mission p{margin:0 auto 16px;color:#5b6471;max-width:460px;line-height:1.5}
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      width:100%;
-      min-height:52px;
-      border:none;
-      text-decoration:none;
-      background:var(--green);
-      color:#072c16;
-      font-size:17px;
-      font-weight:900;
-      border-radius:15px;
-      box-shadow:0 10px 28px rgba(37,211,102,.25);
-      transition:transform .2s ease, box-shadow .2s ease;
-      animation:ctaPulse 2.4s ease-in-out infinite;
-    }
-    .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(37,211,102,.32)}
-    @keyframes ctaPulse{
-      0%,100%{box-shadow:0 10px 28px rgba(37,211,102,.20)}
-      50%{box-shadow:0 12px 36px rgba(37,211,102,.36)}
-    }
-    .small{font-size:12px;color:#7b8490;margin-top:10px}
 
     .countdown{
       margin-top:18px;
@@ -264,8 +274,119 @@
       border-radius:16px;
       padding:12px 8px;
     }
-    .num{font-size:28px;font-weight:900}
-    .unit{font-size:10px;color:#8fa0b4;text-transform:uppercase;margin-top:4px}
+    .num{
+      font-size:28px;
+      font-weight:900;
+    }
+    .unit{
+      font-size:10px;
+      color:#8fa0b4;
+      text-transform:uppercase;
+      margin-top:4px;
+    }
+
+    /* LISTA DE PRESENTES */
+    .gifts{
+      margin-top:18px;
+      background:#0b1220;
+      border:1px solid rgba(244,180,0,.25);
+      border-radius:22px;
+      padding:22px;
+      text-align:center;
+    }
+    .gifts h2{
+      margin:0 0 12px;
+      color:#ffe08a;
+      font-size:23px;
+    }
+    .gifts-intro{
+      font-size:17px;
+      font-weight:bold;
+      margin-bottom:8px;
+    }
+    .gifts-desc{
+      color:#b8c0cc;
+      line-height:1.5;
+      margin-bottom:20px;
+    }
+    .gift-item{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      text-align:left;
+      background:#121b2b;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:15px;
+      margin-bottom:10px;
+    }
+    .gift-item span{
+      font-size:30px;
+    }
+    .gift-item strong{
+      color:#fff;
+      font-size:16px;
+    }
+    .gift-item p{
+      color:#b8c0cc;
+      font-size:14px;
+      margin:5px 0 0;
+    }
+
+    .mission{
+      margin-top:18px;
+      background:linear-gradient(145deg,#f8fafc,#eef2f7);
+      color:#111827;
+      border-radius:22px;
+      padding:22px;
+      text-align:center;
+      box-shadow:0 16px 40px rgba(0,0,0,.18);
+    }
+    .mission h2{
+      margin:0 0 6px;
+      font-size:23px;
+    }
+    .mission p{
+      margin:0 auto 16px;
+      color:#5b6471;
+      max-width:460px;
+      line-height:1.5;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:100%;
+      min-height:52px;
+      border:none;
+      text-decoration:none;
+      background:var(--green);
+      color:#072c16;
+      font-size:17px;
+      font-weight:900;
+      border-radius:15px;
+      box-shadow:0 10px 28px rgba(37,211,102,.25);
+      transition:transform .2s ease, box-shadow .2s ease;
+      animation:ctaPulse 2.4s ease-in-out infinite;
+    }
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 34px rgba(37,211,102,.32);
+    }
+    @keyframes ctaPulse{
+      0%,100%{
+        box-shadow:0 10px 28px rgba(37,211,102,.20);
+      }
+      50%{
+        box-shadow:0 12px 36px rgba(37,211,102,.36);
+      }
+    }
+    .small{
+      font-size:12px;
+      color:#7b8490;
+      margin-top:10px;
+    }
 
     .footer{
       text-align:center;
@@ -280,22 +401,32 @@
       transform:rotate(45deg);
       animation:spin 9s linear infinite;
     }
-    @keyframes spin{to{transform:rotate(405deg)}}
+    @keyframes spin{
+      to{transform:rotate(405deg)}
+    }
+
     @media (max-width:640px){
       .wrap{padding:12px}
       .grid{grid-template-columns:1fr}
-      .hero{min-height:410px;padding:28px 18px 24px}
+      .hero{
+        min-height:410px;
+        padding:28px 18px 24px;
+      }
       .content{padding:16px}
       .timegrid{gap:7px}
       .num{font-size:23px}
     }
     @media (prefers-reduced-motion:reduce){
-      *,*::before,*::after{animation:none!important;transition:none!important}
+      *,*::before,*::after{
+        animation:none!important;
+        transition:none!important;
+      }
       html{scroll-behavior:auto}
     }
   </style>
 </head>
 <body>
+
   <div class="scene" aria-hidden="true">
     <span class="spark" style="left:8%;animation-delay:-2s"></span>
     <span class="spark2" style="left:18%;animation-delay:-4s"></span>
@@ -309,17 +440,24 @@
 
   <div class="wrap">
     <main class="card">
+
       <section class="hero">
         <div class="ring"></div>
         <div class="ring r2"></div>
         <div class="ring r3"></div>
+
         <span class="boom" style="top:12%;left:10%"></span>
         <span class="boom" style="right:12%;bottom:16%;animation-delay:-3s"></span>
 
         <div class="badge">⚡ Missão especial</div>
+
         <h1>Pedro Henrique</h1>
         <p class="age">5 anos!</p>
-        <p class="intro">Você foi convocado para uma aventura de aniversário inspirada no universo dos super-heróis.</p>
+
+        <p class="intro">
+          Você foi convocado para uma aventura de aniversário
+          inspirada no universo dos super-heróis.
+        </p>
 
         <div class="icons" aria-label="Símbolos de super-heróis">
           <div class="heroicon">🕷️</div>
@@ -330,15 +468,18 @@
       </section>
 
       <section class="content">
+
         <div class="grid">
           <div class="info">
             <div class="label">Data</div>
             <div class="value">📅 23 de outubro</div>
           </div>
+
           <div class="info">
             <div class="label">Horário</div>
             <div class="value">⏰ 17:30h</div>
           </div>
+
           <div class="info">
             <div class="label">Local</div>
             <div class="value">📍 Loja Maçônica de Camacan</div>
@@ -346,35 +487,103 @@
         </div>
 
         <div class="countdown">
-          <div class="countdown-title">Contagem regressiva para a missão</div>
+          <div class="countdown-title">
+            Contagem regressiva para a missão
+          </div>
+
           <div class="timegrid">
-            <div class="timebox"><div id="days" class="num">--</div><div class="unit">dias</div></div>
-            <div class="timebox"><div id="hours" class="num">--</div><div class="unit">horas</div></div>
-            <div class="timebox"><div id="minutes" class="num">--</div><div class="unit">min</div></div>
-            <div class="timebox"><div id="seconds" class="num">--</div><div class="unit">seg</div></div>
+            <div class="timebox">
+              <div id="days" class="num">--</div>
+              <div class="unit">dias</div>
+            </div>
+            <div class="timebox">
+              <div id="hours" class="num">--</div>
+              <div class="unit">horas</div>
+            </div>
+            <div class="timebox">
+              <div id="minutes" class="num">--</div>
+              <div class="unit">min</div>
+            </div>
+            <div class="timebox">
+              <div id="seconds" class="num">--</div>
+              <div class="unit">seg</div>
+            </div>
           </div>
         </div>
 
+        <!-- LISTA DE PRESENTES -->
+        <div class="gifts">
+          <h2>🎁 Sugestões de Presentes</h2>
+
+          <p class="gifts-intro">
+            Para quem quiser mimar o nosso pequeno...
+          </p>
+
+          <p class="gifts-desc">
+            Algumas coisinhas que combinam com essa fase
+            tão gostosa dos 5 anos:
+          </p>
+
+          <div class="gift-item">
+            <span>👕</span>
+            <div>
+              <strong>Roupa</strong>
+              <p>Tamanho 6 a 8 anos</p>
+            </div>
+          </div>
+
+          <div class="gift-item">
+            <span>👟</span>
+            <div>
+              <strong>Sapato</strong>
+              <p>Nº 29 / 30</p>
+            </div>
+          </div>
+
+          <div class="gift-item">
+            <span>🧴</span>
+            <div>
+              <strong>Perfumaria infantil</strong>
+              <p>Fragrâncias suaves</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONFIRMAÇÃO WHATSAPP -->
         <div class="mission">
           <h2>Vai participar dessa missão? 🎉</h2>
-          <p>Clique no botão abaixo. O WhatsApp abrirá com a mensagem de confirmação pronta.</p>
+
+          <p>
+            Clique no botão abaixo. O WhatsApp abrirá
+            com a mensagem de confirmação pronta.
+          </p>
+
           <a class="btn"
              href="https://wa.me/5573988382855?text=Ol%C3%A1%21%20Confirmo%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20de%20Pedro%20Henrique%2C%20dia%2023%2F10%20%C3%A0s%2017%3A30h.%20%F0%9F%8E%89"
-             target="_blank" rel="noopener noreferrer">
-             ✅ Confirmar presença no WhatsApp
+             target="_blank"
+             rel="noopener noreferrer">
+            ✅ Confirmar presença no WhatsApp
           </a>
-          <div class="small">Confirmação enviada para: (73) 98838-2855</div>
+
+          <div class="small">
+            Confirmação enviada para: (73) 98838-2855
+          </div>
         </div>
+
       </section>
 
-      <div class="footer">Pedro Henrique • 5 anos • 23/10 às 17:30h</div>
+      <div class="footer">
+        Pedro Henrique • 5 anos • 23/10 às 17:30h
+      </div>
+
     </main>
   </div>
 
   <script>
     (function(){
-      // Usa 23/10/2026 às 17:30 em horário local do dispositivo.
+      // 23/10/2026 às 17:30 no horário local.
       const eventDate = new Date(2026, 9, 23, 17, 30, 0);
+
       const d = document.getElementById('days');
       const h = document.getElementById('hours');
       const m = document.getElementById('minutes');
@@ -382,6 +591,7 @@
 
       function updateCountdown(){
         let diff = eventDate.getTime() - Date.now();
+
         if(diff <= 0){
           d.textContent = '0';
           h.textContent = '0';
@@ -389,19 +599,23 @@
           s.textContent = '0';
           return;
         }
+
         const sec = Math.floor(diff / 1000);
         const days = Math.floor(sec / 86400);
         const hours = Math.floor((sec % 86400) / 3600);
         const mins = Math.floor((sec % 3600) / 60);
         const secs = sec % 60;
+
         d.textContent = days;
         h.textContent = String(hours).padStart(2,'0');
         m.textContent = String(mins).padStart(2,'0');
         s.textContent = String(secs).padStart(2,'0');
       }
+
       updateCountdown();
       setInterval(updateCountdown,1000);
     })();
   </script>
+
 </body>
 </html>
